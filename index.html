@@ -39,8 +39,43 @@
             color: #007acc;
             text-decoration: none;
         }
-        .section {
-            margin-bottom: 40px;
+        .btn {
+            display: inline-block;
+            padding: 10px 15px;
+            background-color: #007acc;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+        form {
+            margin-top: 30px;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        button {
+            background-color: #004aad;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        @media screen and (max-width: 600px) {
+            .profile-img {
+                float: none;
+                display: block;
+                margin: 0 auto 20px;
+            }
+            .container {
+                padding: 10px;
+            }
         }
     </style>
 </head>
@@ -52,6 +87,7 @@
         <p>Email: <a href="mailto:orthimalek@gmail.com">orthimalek@gmail.com</a> | Phone: +1 (213) 619-8950</p>
         <p>Google Scholar: <a href="https://scholar.google.com/citations?user=BDil2hgAAAAJ&hl=en" target="_blank">View Profile</a></p>
         <p>LinkedIn: <a href="http://www.linkedin.com/in/shuchona-orthi-247028206" target="_blank">shuchona-orthi-247028206</a></p>
+        <p><a href="SHUCHONA_MALEK_ORTHI_CV_Apr_2025.pdf" download class="btn">📄 Download My Resume</a></p>
 
         <div class="section">
             <h2>About Me</h2>
@@ -59,48 +95,16 @@
         </div>
 
         <div class="section">
-            <h2>Education</h2>
-            <ul>
-                <li><strong>Master of Science in IT Project Management</strong>, Westcliff University, USA — <em>CGPA: 3.52 (Ongoing)</em></li>
-                <li><strong>MBA in Marketing</strong>, University of Dhaka, Bangladesh — <em>CGPA: 3.59</em></li>
-                <li><strong>BA in English</strong>, Stamford University, Bangladesh — <em>CGPA: 3.33</em></li>
-            </ul>
-        </div>
-
-        <div class="section">
-            <h2>Research & Publications</h2>
-            <ul>
-                <li><a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=BDil2hgAAAAJ&citation_for_view=BDil2hgAAAAJ:IjCSPb-OGe4C" target="_blank">Advanced Cyber Threats and Cybersecurity Innovation</a></li>
-                <li>AI-Driven Project Management Systems: Enhancing IT Project Efficiency through MIS Integration</li>
-                <li>Leveraging MIS for Agile Project Management in IT</li>
-                <li>AI Powered Digital Transformation in Healthcare</li>
-                <li>Artificial Intelligence in Business Intelligence</li>
-            </ul>
-        </div>
-
-        <div class="section">
-            <h2>Professional Experience</h2>
-            <ul>
-                <li><strong>Project Coordinator</strong>, Relisource Tech Inc — (Feb 2021 – Mar 2023)</li>
-                <li><strong>Project Planning & Branding Executive</strong>, Realme Bangladesh — (Aug 2020 – Jan 2021)</li>
-                <li><strong>Project Associate</strong>, N2SYS — (May 2015 – Aug 2020)</li>
-            </ul>
-        </div>
-
-        <div class="section">
-            <h2>Grants & Awards</h2>
-            <ul>
-                <li>🏆 Simcubator Grant Winner ($5,000), Switzerland</li>
-                <li>🏆 $17,000 Startup Development Grant from BYLC & Netherlands Embassy</li>
-            </ul>
-        </div>
-
-        <div class="section">
-            <h2>Leadership & Volunteering</h2>
-            <ul>
-                <li>🎗 Mentor & Speaker at Women in Tech Bangladesh</li>
-                <li>🎗 Community Engagement & Social Impact Projects</li>
-            </ul>
+            <h2>Contact Me</h2>
+            <form action="https://formspree.io/f/mwkgbkgz" method="POST">
+                <label for="name">Your Name:</label>
+                <input type="text" name="name" required>
+                <label for="email">Your Email:</label>
+                <input type="email" name="_replyto" required>
+                <label for="message">Your Message:</label>
+                <textarea name="message" rows="5" required></textarea>
+                <button type="submit">Send</button>
+            </form>
         </div>
     </div>
 </body>
