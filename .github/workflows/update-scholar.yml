@@ -4,6 +4,9 @@ on:
   schedule:
     - cron: '0 6 * * 0'  # Runs every Sunday at 6 AM UTC
   workflow_dispatch:
+  
+permissions:
+  contents: write
 
 jobs:
   update:
@@ -18,7 +21,7 @@ jobs:
       with:
         python-version: '3.10'
 
-    - name: Install dependencies
+    - name: Install scholarly
       run: |
         pip install scholarly
 
