@@ -1,9 +1,8 @@
-
 name: Update Google Scholar Publications
 
 on:
   schedule:
-    - cron: '0 6 * * 0'
+    - cron: '0 6 * * 0'  # Runs every Sunday at 6 AM UTC
   workflow_dispatch:
 
 jobs:
@@ -19,17 +18,17 @@ jobs:
       with:
         python-version: '3.10'
 
-    - name: Install scholarly
+    - name: Install dependencies
       run: |
         pip install scholarly
 
-    - name: Run fetch script
+    - name: Run Google Scholar Fetch Script
       run: python fetch_google_scholar_publications.py
 
-    - name: Commit and push changes
+    - name: Commit and push updated index.html
       run: |
-        git config user.name github-actions
-        git config user.email github-actions@github.com
-        git add research_publications.html
-        git commit -m "📚 Auto-update: latest publications from Google Scholar"
+        git config user.name "github-actions"
+        git config user.email "github-actions@github.com"
+        git add index.html
+        git commit -m "📚 Auto-update: embedded publications from Google Scholar"
         git push
