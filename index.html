@@ -366,23 +366,158 @@ footer a {
 }
 footer a:hover { color: var(--accent); }
 
+/* ── Hamburger nav toggle ── */
+.nav-toggle {
+  display: none;
+  background: none; border: none; cursor: pointer;
+  padding: 0.3rem; margin-left: auto;
+  flex-direction: column; justify-content: center;
+  gap: 5px;
+}
+.nav-toggle span {
+  display: block; width: 22px; height: 2px;
+  background: var(--accent);
+  border-radius: 2px;
+  transition: all 0.25s ease;
+}
+.nav-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-toggle.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.nav-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* ── Back to top button ── */
+#back-to-top {
+  position: fixed; bottom: 1.5rem; right: 1.5rem; z-index: 999;
+  width: 44px; height: 44px;
+  background: var(--accent); color: #fff;
+  border: none; border-radius: 50%;
+  font-size: 1.1rem; font-weight: 700; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 4px 16px rgba(30,58,95,0.25);
+  opacity: 0; pointer-events: none;
+  transition: opacity 0.3s, transform 0.3s;
+  transform: translateY(12px);
+}
+#back-to-top.visible {
+  opacity: 1; pointer-events: auto;
+  transform: translateY(0);
+}
+#back-to-top:hover { background: #16304f; }
+
 @media (max-width: 768px) {
-  nav { padding: 0 1.5rem; }
-  nav ul { gap: 1.2rem; }
+  /* Nav — hamburger layout */
+  nav {
+    padding: 0 1rem;
+    flex-wrap: wrap;
+    height: auto;
+    min-height: 52px;
+    padding-top: 0.3rem;
+    padding-bottom: 0.3rem;
+  }
+  .nav-brand { flex: 1; }
+  .nav-toggle { display: flex; }
+  nav ul {
+    display: none;
+    flex-direction: column;
+    gap: 0;
+    width: 100%;
+    padding: 0.5rem 0 0.75rem;
+    border-top: 1px solid var(--border);
+    margin-top: 0.3rem;
+  }
+  nav ul.open { display: flex; }
+  nav ul li a {
+    display: block;
+    padding: 0.55rem 0.25rem;
+    font-size: 0.8rem;
+    border-bottom: 1px solid var(--border);
+  }
+  nav ul li:last-child a { border-bottom: none; }
+
+  /* Hero */
   .hero {
     grid-template-columns: 1fr;
-    padding: 2.5rem 1.5rem 2rem;
-    gap: 2rem;
+    padding: 2.5rem 1.25rem 2rem;
+    gap: 1.5rem;
+    text-align: center;
   }
   .hero-img {
-    width: 120px; height: 120px;
+    width: 110px; height: 110px;
     margin: 0 auto;
   }
-  .page { padding: 0 1.5rem 4rem; }
-  .stats-row { grid-template-columns: repeat(2, 1fr); }
-  .tl-item { grid-template-columns: 80px 1fr; gap: 1rem; }
-  .edu-row { flex-direction: column; gap: 0.5rem; }
-  footer { flex-direction: column; text-align: center; }
+  .hero-chips { justify-content: center; }
+  .hero-links { justify-content: center; }
+
+  /* Page & sections */
+  .page { padding: 0 1.25rem 4rem; }
+  h2 { font-size: 1.35rem; }
+
+  /* Stats */
+  .stats-row { grid-template-columns: repeat(2, 1fr); gap: 0.75rem; }
+
+  /* Timeline */
+  .tl { padding-left: 1.6rem; }
+  .tl-item {
+    grid-template-columns: 70px 1fr;
+    gap: 0.75rem;
+  }
+  .tl-date { font-size: 0.68rem; }
+  .tl-dot { left: -1.2rem; }
+
+  /* Education */
+  .edu-row { flex-direction: column; gap: 0.4rem; }
+  .edu-gpa { font-size: 0.8rem; }
+
+  /* Awards & Service cards */
+  .award-card,
+  .service-card {
+    grid-template-columns: 40px 1fr;
+    gap: 0.9rem;
+    padding: 1rem 1.1rem;
+  }
+  .award-icon { font-size: 1.6rem; }
+  .service-icon { font-size: 1.5rem; }
+
+  /* Skills grid */
+  .skills-grid { grid-template-columns: 1fr; }
+
+  /* RI grid */
+  .ri-grid { grid-template-columns: 1fr; }
+
+  /* NIW banner */
+  .niw-banner { padding: 1.2rem 1.2rem; font-size: 0.85rem; }
+
+  /* Pub cards */
+  .pub-card { padding: 1.1rem 1.2rem; }
+  .pub-meta { gap: 0.4rem; }
+
+  /* Back to top */
+  #back-to-top { bottom: 1rem; right: 1rem; }
+
+  /* Footer */
+  footer {
+    flex-direction: column;
+    text-align: center;
+    padding: 1.4rem 1.25rem;
+    gap: 0.6rem;
+  }
+}
+
+@media (max-width: 480px) {
+  body { font-size: 14px; }
+  .topbar { font-size: 0.66rem; padding: 0.4rem 0.75rem; }
+  .hero { padding: 2rem 1rem 1.5rem; }
+  .hero h1 { font-size: 1.75rem; }
+  .page { padding: 0 1rem 3.5rem; }
+  .stats-row { grid-template-columns: 1fr 1fr; gap: 0.6rem; }
+  .stat-n { font-size: 1.5rem; }
+  .tl-item { grid-template-columns: 1fr; gap: 0.3rem; }
+  .tl-date { text-align: left; }
+  .tl-dot { display: none; }
+  .tl::before { display: none; }
+  .tl { padding-left: 0; }
+  .award-card,
+  .service-card { grid-template-columns: 1fr; }
+  .award-icon, .service-icon { font-size: 1.4rem; }
 }
 </style>
 </head>
@@ -394,7 +529,10 @@ footer a:hover { color: var(--accent); }
 
 <nav>
   <div class="nav-brand">Shuchona Malek Orthi</div>
-  <ul>
+  <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+  <ul id="navMenu">
     <li><a href="#about">About</a></li>
     <li><a href="#research">Research</a></li>
     <li><a href="#publications">Publications</a></li>
@@ -904,5 +1042,39 @@ footer a:hover { color: var(--accent); }
   </span>
 </footer>
 
+<!-- Back to Top Button -->
+<button id="back-to-top" aria-label="Back to top" title="Back to top">↑</button>
+
+<script>
+  /* ── Hamburger nav ── */
+  const toggle = document.getElementById('navToggle');
+  const menu   = document.getElementById('navMenu');
+
+  toggle.addEventListener('click', () => {
+    const open = menu.classList.toggle('open');
+    toggle.classList.toggle('open', open);
+    toggle.setAttribute('aria-expanded', open);
+  });
+
+  // Close menu when a link is tapped
+  menu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      menu.classList.remove('open');
+      toggle.classList.remove('open');
+      toggle.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  /* ── Back to Top ── */
+  const btn = document.getElementById('back-to-top');
+
+  window.addEventListener('scroll', () => {
+    btn.classList.toggle('visible', window.scrollY > 400);
+  }, { passive: true });
+
+  btn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+</script>
 </body>
 </html>
